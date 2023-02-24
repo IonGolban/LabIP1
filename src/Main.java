@@ -20,9 +20,14 @@ public class Main {
         cars.add(electro1);
         cars.add(combust1);
         electro.addPasager("Claudiu");
-        electro1.addPasager("Sab","Tata");
+        electro1.addPasager("Sab");
         combust.addPasager("Sab","Tata","mama");
-
+        combust1.addPasager("Sab","Tata","mama");
+        cars.forEach(car -> {
+            car.getPasagers().forEach(pasager -> {
+                System.out.println(pasager.getName());
+            });
+        });
     }
 }
 enum TypeOfCar{
@@ -57,6 +62,7 @@ class Pasager{
     }
 }
 abstract class Car{
+
     protected String sofer ;
     protected ArrayList<Pasager> pasagers;
     protected TypeOfCar typeOf ;
@@ -140,7 +146,7 @@ class ElectricCar extends Car{
     }
     public ElectricCar(String sofer,  TypeOfCar typeOf ) {
         this.sofer = sofer;
-        this.pasagers = null;
+        this.pasagers = new ArrayList<>();
         this.typeOf = typeOf;
     }
 
@@ -172,7 +178,7 @@ class CombustCar extends Car{
     }
     public CombustCar(String sofer, TypeOfCar typeOf ) {
         this.sofer = sofer;
-        this.pasagers = null;
+        this.pasagers = new ArrayList<>();
         this.typeOf = typeOf;
     }
     @Override
